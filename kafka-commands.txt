@@ -1,0 +1,34 @@
+C:/kafka>.\bin\windows\zookeeper-server-start.bat .\config\zookeeper.properties
+
+.\bin\windows\kafka-server-start.bat .\config\server.properties
+
+
+
+.\bin\windows\kafka-topics.bat --create --topic  kafka-topic --bootstrap-server localhost:9092
+
+
+C:\kafka>.\bin\windows\kafka-topics.bat --create --bootstrap-server localhost:9092 --replication-factor 1 --partitions 1 --topic kafka-topic-A
+Error while executing topic command : Call(callName=createTopics, deadlineMs=1663500474109, tries=1, nextAllowedTryMs=1663500474225) timed out at 1663500474125 after 1 attempt(s)
+[2022-09-18 16:57:54,139] ERROR org.apache.kafka.common.errors.TimeoutException: Call(callName=createTopics, deadlineMs=1663500474109, tries=1, nextAllowedTryMs=1663500474225) timed out at 1663500474125 after 1 attempt(s)
+Caused by: org.apache.kafka.common.errors.DisconnectException: Cancelled createTopics request with correlation id 3 due to node 0 being disconnected
+(kafka.admin.TopicCommand$)
+
+
+need to change server.properties file config folder
+listeners=PLAINTEXT://localhost:9092
+
+.\bin\windows\kafka-topics.bat --create --bootstrap-server localhost:9092 --replication-factor 1 --partitions 1 --topic kafka-topic-A
+
+
+https://www.javaguides.net/2022/05/spring-boot-kafka-producer-consumer-example-tutorial.html
+
+https://www.javaguides.net/2022/05/spring-boot-kafka-jsonserializer-and-Jsondeserializer-example.html
+
+
+echo "# SpringBoot-Kafka-Example" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/sreeharipoola/SpringBoot-Kafka-Example.git
+git push -u origin main
